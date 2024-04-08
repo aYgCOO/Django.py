@@ -16,10 +16,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from practiceapp.views import home
+from practiceapp.views import home, contact, about
 
 urlpatterns = [
-    path("", home, name="home")
+    
+path('', home, name='home'),
+path('contact/', contact, name='contact'),
+path('about/', about, name='about')
+
     
     
 ]

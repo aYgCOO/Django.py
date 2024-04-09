@@ -1,0 +1,15 @@
+#How many types you can create an object in django shell 
+
+1) Method 1
+`car = Car(car_name = "AbcdCar", speed = 110)`
+`car.save()`
+`car` => print the object
+
+2)Method 2
+`car = Car.objects.create(car_name = "AbcdCar", speed = 110)`
+`car` => print the object
+
+3)Method 3
+`car_dict = {"name": "AbcdCar", "speed":80}`
+`car = Car.objects.create(**car_dict)`
+`car` => print the object

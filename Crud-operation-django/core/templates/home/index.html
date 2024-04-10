@@ -5,19 +5,23 @@
           {% csrf_token %}
           <h3>Add recipes</h3>
           <hr>
-     <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label">Recipe name</label>
-          <input type="text" class="form-control" name="recipe_name" id="exampleFormControlInput1" required>
-        </div>
-        <div class="mb-3">
-          <label for="exampleFormControlTextarea1" class="form-label">Recipe Description</label>
-          <textarea class="form-control" name="recipe_desc" id="exampleFormControlTextarea1" rows="3" required></textarea>
-        </div>
-        <div class="input-group mb-3">
-          <label class="input-group-text" for="inputGroupFile01">Upload</label>
-          <input type="file" class="form-control" name="recipe_image" id="inputGroupFile01">
-        </div>
+          {% for field in form %}
+            <div class="mb-3">
+                {{ field.label_tag }}
+                {{ field }}
+                {% if field.help_text %}
+                    <small class="form-text text-muted">{{ field.help_text }}</small>
+                {% endif %}
+                {% if field.errors %}
+                    <ul class="errorlist">
+                        {% for error in field.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+          {% endfor %}
         <input type="submit" value="Add Recipe" name="submit" class="btn btn-danger">
      </form>
 </body>
-{% endblock %} 
+{% endblock %}

@@ -1,15 +1,19 @@
 from django.shortcuts import render
-
 # Create your views here.
 
-def recipe(request):
-     if request.method == "POST":
-          data = request.POST
-          recipe_image = request.FILES.get('recipe_image')
-          recipe_name = data.get("recipe_name")
-          recipe_desc = data.get("recipe_desc")
-          print(recipe_name)
-          print(recipe_desc)
-          print(recipe_image)
-     print(data)
-     return render(request, 'home/index.html')
+# def get_recipe(request):
+#         if request.method == 'POST':
+#              form = recipe(request.POST)
+#         if form.is_valid():
+#             form.save()
+#             return redirect('recipe_list') # type: ignore
+#         else:
+#              form = recipe()
+#              return render(request, 'recipe_form.html', {'form': form})/
+
+
+from .form import RecipeForm
+def recipe_form(request):
+     form = RecipeForm()
+     context = {'form': form}
+     return render(request, 'home/index.html', context)

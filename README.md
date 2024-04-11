@@ -1,7 +1,7 @@
 # Django.py
 Let's Start !
 
-# Basic cmd for Django users 
+# Basic commands for Django users 
 
 `django-admin startproject [project_name]`: Creates a new Django project with the given name.
 

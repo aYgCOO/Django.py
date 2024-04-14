@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block start %}
+
+
+     <div class="col-6 mx-auto card py-3 px-3 mt-3">
+          <ul>
+               {% for menu in recipe_list  %}
+              <li>
+               {{menu.recipe_name}} {{menu.recipe_desc}}
+              </li>   
+              {% endfor %}
+          </ul>
+      </div>
+      <div class="col-6 mx-auto card py-3 px-3 mt-3">
+          <ul>
+              
+              <li>
+               {{statement1 | lower}}
+              </li>   
+              <li>
+               {{statement2 | upper}}
+              </li>   
+
+             
+          </ul>
+      </div>
+
+
+
+{% endblock %}

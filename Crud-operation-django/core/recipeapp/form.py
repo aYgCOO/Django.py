@@ -8,9 +8,23 @@
 
 from django.forms import ModelForm
 from .models import Recipe
+# from django import forms
 
 class RecipeForm(ModelForm):
     class Meta:
         model = Recipe
         fields = ['recipe_name', 'recipe_desc', 'recipe_image']
+
+# class ChefRegister(forms.Form):
+#     name = forms.CharField(max_length=100)
+#     email = forms.EmailField()
+#     phone = forms.IntegerField()
+#     age = forms.IntegerField()
+#     gender = forms.ChoiceField(choices=[('M', 'Male'), ('F', 'Female'), ('O', 'Others')])
+#     city = forms.CharField(max_length=60)
+#     about = forms.CharField(widget=forms.Textarea)
+
+
+
+    
         

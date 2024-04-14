@@ -1,0 +1,21 @@
+{% extends "form-base.html" %}
+
+{% block start %}
+<form action="{% url 'form' %}" class="container py-4 px-5 bg-dark border-dark rounded text-light" method="post" enctype="multipart/form-data">
+     <h5>New Post</h5>
+     <hr>
+     {% csrf_token %}
+     <div class="mb-3">
+          <label for="exampleFormControlTextarea1" class="form-label">Caption</label>
+          <textarea class="form-control bg-dark text-light" name="caption" id="exampleFormControlTextarea1" rows="3">{{caption}}</textarea>
+     </div>
+     <div class="mb-3">
+          <label for="formFile" class="form-label">Upload new picture</label>
+          <!-- Fixed the input field for file upload -->
+          <input class="form-control bg-dark text-light" name="image" type="file" id="formFile">
+     </div>
+     <button type="submit" class="btn btn-danger w-100" name="submit">Upload</button>
+</form>
+
+
+{% endblock %}

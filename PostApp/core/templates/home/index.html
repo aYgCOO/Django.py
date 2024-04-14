@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block start %}
+
+<!-- Navbar -start  -->
+<nav class="navbar mb-5  bg-dark">
+     <div class="container-fluid">
+          <a class="navbar-brand text-light">iGallary <i class="ri-camera-lens-fill"></i></a>
+          <form class="d-flex" role="search">
+               <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+               <button class="btn btn-danger" type="submit">Search</button>
+          </form>
+     </div>
+</nav>
+<!-- Navbar -end  -->
+
+<!-- Main body -start  -->
+<!-- home.html -->
+{% for post in db %}
+<div class="col-lg-6 col-md-8 mx-auto card py-3 px-3 bg-dark mt-5 border-dark">
+    <p class="text-light">
+        <i class="ri-pushpin-fill"></i> 03/05/2024
+    </p>
+    <!-- Accessing image attribute of each post object -->
+    {% if post.image %}
+    <img src="media/{{ post.image.url }}" alt="This is a burger" class="image rounded img-fluid">
+    {% else %}
+    <img src="/static/img/demo.jpg" alt="This is a burger" class="image rounded img-fluid">
+    {% endif %}
+    <div>
+        <figcaption class="text-light py-2">
+            {{ post.caption }}
+        </figcaption>
+    </div>
+</div>
+{% endfor %}
+
+ 
+ 
+ 
+
+ 
+
+<!--Main body -end-->
+
+<!-- Footer -start  -->
+<footer class="w-100 bg-dark py-2 px-1 c-footer">
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-danger rounded">
+     <a href="/new-post/" style="text-decoration: none; color: white;"><strong><i class="ri-add-large-line"></i></strong></a>
+   </button>
+<!-- Button trigger modal -->
+</footer>
+
+<!-- Footer -end  -->
+
+
+{% endblock %}

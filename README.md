@@ -1,8 +1,6 @@
 # Django.py
 Let's Start !
 
-# Basic commands for Django users 
-
 `django-admin startproject [project_name]`: Creates a new Django project with the given name.
 
 `python manage.py startapp [app_name]`: Creates a new Django app within your project.

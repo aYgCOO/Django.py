@@ -4,9 +4,10 @@ from django.contrib import messages
 
 # Create your views here.
 def home(request):
-     db = newpost.objects.all()
+     db = newpost.objects.all().order_by('-date')
      context = {'db': db}
-     return render(request, 'home/index.html', context=context)
+    #  return render(request, 'home/index.html', context=context)
+     return render(request, 'home/index.html',context)
 
 def form(request):
     if request.method == 'POST':
@@ -20,4 +21,4 @@ def form(request):
         
         return redirect('/')  
     else:
-        return render(request, 'home/index.html', context=context)
+        return render(request, 'home/form.html')

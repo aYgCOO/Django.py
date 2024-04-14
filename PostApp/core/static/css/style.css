@@ -1,9 +1,6 @@
 :root{
      --background : #27272a;
 }
-body{
-     background-color: var(--background) ;
-}
 .navbar {
      position: fixed;
      top: 0;
@@ -20,6 +17,7 @@ body{
      color: white;
      text-align: center;
    }
+  
  
 
 @media only screen and (max-width: 1000px) {

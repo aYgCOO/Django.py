@@ -3,53 +3,76 @@
 {% block start %}
 
 <!-- Navbar -start  -->
-<nav class="navbar mb-5  bg-dark">
-     <div class="container-fluid">
-          <a class="navbar-brand text-light">iGallary <i class="ri-camera-lens-fill"></i></a>
-          <form class="d-flex" role="search">
-               <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-               <button class="btn btn-danger" type="submit">Search</button>
-          </form>
-     </div>
+<nav class="navbar bg-dark border-bottom border-body border-dark" data-bs-theme="dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">iGallary <i class="ri-camera-lens-fill"></i></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <form class="d-flex mt-5" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" style="border-radius: 100px;">
+                    <button class="btn btn-dark rounded-circle border-light" type="submit"><i class="ri-search-line"></i></button>
+                  </form>
+            </ul>
+        </div>
+    </div>
 </nav>
 <!-- Navbar -end  -->
 
 <!-- Main body -start  -->
 <!-- home.html -->
-{% for post in db %}
-<div class="col-lg-6 col-md-8 mx-auto card py-3 px-3 bg-dark mt-5 border-dark">
-    <p class="text-light">
-        <i class="ri-pushpin-fill"></i> 03/05/2024
-    </p>
-    <!-- Accessing image attribute of each post object -->
-    {% if post.image %}
-    <img src="media/{{ post.image.url }}" alt="This is a burger" class="image rounded img-fluid">
-    {% else %}
-    <img src="/static/img/demo.jpg" alt="This is a burger" class="image rounded img-fluid">
-    {% endif %}
-    <div>
-        <figcaption class="text-light py-2">
-            {{ post.caption }}
-        </figcaption>
+<div style="margin-top: 10vh; margin-bottom: 10vh;">
+    {% for post in db %}
+    <div class="col-lg-6 col-md-8 mx-auto card py-3 bg-dark rounded-0">
+        <span class="text-light">
+            <i class="ri-pushpin-fill"></i> {{post.date}}
+        </span>
+        <div>
+            <figcaption class="text-light py-2">
+                {{ post.caption }}
+            </figcaption>
+        </div>
+        <!-- Accessing image attribute of each post object -->
+        {% if post.image %}
+        <img src="{{ post.image.url }}" alt="This is a burger" class="image rounded img-fluid rounded-0">
+        {% else %}
+        <img src="/static/img/demo.jpg" alt="This is a burger" class="image rounded img-fluid">
+        {% endif %}
+        <div class="container">
+            <div class="row justify-content-end">
+                <div class="col-auto py-3">
+                    <strong> <a href="" class="text-light px-3" style="text-decoration: none; font-size: 1.6rem;"><i
+                                class="ri-delete-bin-6-line"></i></a>
+                    </strong>
+                    <strong><a href="" style="text-decoration: none; font-size: 1.6rem;" class="text-light"><i
+                                class="ri-edit-box-line"></i></a></strong>
+                </div>
+            </div>
+        </div>
+
+
     </div>
+    {% endfor %}
+
 </div>
-{% endfor %}
 
- 
- 
- 
 
- 
+
+
 
 <!--Main body -end-->
 
 <!-- Footer -start  -->
 <footer class="w-100 bg-dark py-2 px-1 c-footer">
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-danger rounded">
-     <a href="/new-post/" style="text-decoration: none; color: white;"><strong><i class="ri-add-large-line"></i></strong></a>
-   </button>
-<!-- Button trigger modal -->
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-dark border-light rounded-circle">
+        <a href="/new-post/" style="text-decoration: none; color: white;"><strong><i
+                    class="ri-add-large-line"></i></strong></a>
+    </button>
+    <!-- Button trigger modal -->
 </footer>
 
 <!-- Footer -end  -->

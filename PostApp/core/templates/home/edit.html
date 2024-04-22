@@ -1,0 +1,28 @@
+{% extends "form-base.html" %}
+
+{% block start %}
+<!-- Update form -Start -->
+<form action="{% url 'edit-post' id=post.id %}" class="container py-4 px-5 bg-dark border-dark rounded text-light" method="post" enctype="multipart/form-data">
+     <h5>Edit Post</h5>
+     <hr>
+     {% csrf_token %}
+     <div class="mb-3">
+          {%if post.caption %}
+          {% comment %} <p>
+          {{post.caption}}
+          </p> {% endcomment %}
+          {% endif %}
+          <label for="exampleFormControlTextarea1" class="form-label">Edit caption</label>
+          <textarea class="form-control bg-dark text-light" name="edit-caption" id="exampleFormControlTextarea1" rows="3">{{post.caption}}</textarea>
+     </div>
+     <div class="mb-3">
+          {% if post.image %}
+          <img src="{{post.image.url}}" class="img-fluid" alt="...">
+          {% endif %}
+          <label for="formFile" class="form-label">Edit picture</label>
+          <input class="form-control bg-dark text-light" name="edit-image" type="file" id="formFile">
+     </div>
+     <button type="submit" class="btn btn-danger w-100" name="submit">Update</button>
+</form>
+<!-- Update form -End  -->
+{% endblock %}

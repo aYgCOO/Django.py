@@ -23,9 +23,9 @@
 <!-- Navbar -end  -->
 
 <!-- Main body -start  -->
-<!-- home.html -->
 <div style="margin-top: 10vh; margin-bottom: 10vh;">
     {% for post in db %}
+    <!-- Post section -Start  -->
     <div class="col-lg-6 col-md-8 mx-auto card py-3 bg-dark rounded-0">
         <span class="text-light">
             <i class="ri-pushpin-fill"></i> {{post.date}}
@@ -44,37 +44,29 @@
         <div class="container">
             <div class="row justify-content-end">
                 <div class="col-auto py-3">
-                    <strong> <a href="" class="text-light px-3" style="text-decoration: none; font-size: 1.6rem;"><i
+                    <strong> <a href="delete/{{post.id}}" class="text-light px-3" style="text-decoration: none; font-size: 1.6rem;"><i
                                 class="ri-delete-bin-6-line"></i></a>
                     </strong>
-                    <strong><a href="" style="text-decoration: none; font-size: 1.6rem;" class="text-light"><i
+                    <strong><a href="{% url 'edit-post' id=post.id %}" style="text-decoration: none; font-size: 1.6rem;" class="text-light"><i
                                 class="ri-edit-box-line"></i></a></strong>
                 </div>
             </div>
         </div>
-
-
     </div>
+    <!-- Post section -End  -->
     {% endfor %}
-
 </div>
-
-
-
-
-
 <!--Main body -end-->
 
 <!-- Footer -start  -->
 <footer class="w-100 bg-dark py-2 px-1 c-footer">
-    <!-- Button trigger modal -->
+    <!-- Post button -Start -->
     <button type="button" class="btn btn-dark border-light rounded-circle">
         <a href="/new-post/" style="text-decoration: none; color: white;"><strong><i
                     class="ri-add-large-line"></i></strong></a>
     </button>
-    <!-- Button trigger modal -->
+    <!-- Post button -End -->
 </footer>
-
 <!-- Footer -end  -->
 
 

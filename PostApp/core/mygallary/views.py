@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404, HttpResponse
 from mygallary.models import newpost
 from django.contrib import messages
 
@@ -36,20 +36,31 @@ def delete(request, id):
 #Edit post
 def edit(request, id):
     post = get_object_or_404(newpost, id=id)
-    
     if request.method == 'POST':
         edit_caption = request.POST.get('edit-caption')
         edit_image = request.FILES.get('edit-image')
-
         if edit_caption or edit_image:
-            post.edit_caption = edit_caption
+            post.caption = edit_caption
             if edit_image:
-                post.edit_image = edit_image
+                post.image = edit_image
             post.save()
+            print("saved!")
             return redirect('home')
     else:
         context = {'post': post, 'error': 'Oops! Something went wrong :('}
         return render(request, 'home/edit.html', context=context)
     
+
+#Search post
+def search_query(request):
+    if request.method == 'GET':
+        print("1st done")
+        query = request.GET.get('query')
+        print("2nd done")
+        if query:
+            print("3rd done")
+            search = newpost.objects.filter( caption=query, image=query)
+            print("4th done")
+    return render(request, 'home/search.html', {'search': search})
     
 

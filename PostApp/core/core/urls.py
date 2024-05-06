@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from mygallary.views import home, form, delete, edit
+from mygallary.views import home, form, delete, edit, search_query
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -25,7 +25,9 @@ urlpatterns = [
     path('', home, name='home'),
     path('new-post/', form, name='form'),
     path('delete/<int:id>/', delete, name='delete'),
-    path('edit-post/<int:id>/', edit, name='edit-post')
+    path('edit-post/<int:id>/', edit, name='edit-post'),
+    path('search/', search_query, name='search_query'),
+
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

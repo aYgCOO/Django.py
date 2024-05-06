@@ -1,0 +1,45 @@
+{% extends "form-base.html" %}
+{% block start %}
+{{error}}
+<!-- Main body -start  -->
+{% if search %}
+<div style="margin-top: 10vh; margin-bottom: 10vh;">
+     {% for search_ in search  %}
+     <!-- Post section -Start  -->
+     <div class="col-lg-6 col-md-8 mx-auto card py-3 bg-dark rounded-0">
+         <span class="text-light">
+             <i class="ri-pushpin-fill"></i> {{search_.date}}
+         </span>
+         <div>
+             <figcaption class="text-light py-2">
+                 {{ search_.caption }}
+             </figcaption>
+         </div>
+         <!-- Accessing image attribute of each post object -->
+         {% if search_.image %}
+         <img src="{{ search_.image.url }}" alt="This is a burger" class="image rounded img-fluid rounded-0">
+         {% else %}
+         <img src="/static/img/demo.jpg" alt="This is a burger" class="image rounded img-fluid">
+         {% endif %}
+         <div class="container">
+             <div class="row justify-content-end">
+                 <div class="col-auto py-3">
+                     <strong> <a href="delete/{{search_.id}}" class="text-light px-3" style="text-decoration: none; font-size: 1.6rem;"><i
+                                 class="ri-delete-bin-6-line"></i></a>
+                     </strong>
+                     <strong><a href="{% url 'edit-post' id=post.id %}" style="text-decoration: none; font-size: 1.6rem;" class="text-light"><i
+                                 class="ri-edit-box-line"></i></a></strong>
+                 </div>
+             </div>
+         </div>
+     </div>
+     <!-- Post section -End  -->
+     {% endfor %}
+ </div>
+ {% else %}
+ <center class="text-light"> Opps!</center>
+ {% endif %}
+ 
+ <!--Main body -end-->
+
+{% endblock %}

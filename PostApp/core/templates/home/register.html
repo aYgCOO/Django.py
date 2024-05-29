@@ -1,0 +1,31 @@
+<div class="container py-5">
+     <div class="row justify-content-center">
+         <div class="col-md-6">
+          
+             <form action="{% url 'signin' %}" method="post" class="bg-light p-4 rounded shadow-sm" enctype="multipart/form-data">
+               {%csrf_token%}
+                 <h2 class="text-center mb-4">Sign In</h2>
+                 <div class="form-floating mb-3">
+                     <input type="text" class="form-control" id="floatingInput" placeholder="username" name="username" required>
+                     <label for="floatingInput">Username</label>
+                 </div>
+                 <div class="form-floating mb-3">
+                    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="email" required>
+                    <label for="floatingInput">Email address</label>
+                </div>
+                 <div class="form-floating mb-3">
+                     <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password" required>
+                     <label for="floatingPassword">Password</label>
+                 </div>
+                 <div class="form-floating mb-3">
+                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="confirm_password" required>
+                    <label for="floatingPassword">Confirm Password</label>
+                </div>
+                 <input type="file" name="profile_pic" id="profile_pic">
+                 <div class="d-grid">
+                     <button type="submit" class="btn btn-primary btn-block" name="submit">Sign In</button>
+                 </div>
+             </form>
+         </div>
+     </div>
+ </div>

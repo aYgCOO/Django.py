@@ -1,0 +1,20 @@
+<html>
+     <head>
+          <title>fuck</title>
+     </head>
+     <body>
+<h1>This is a profile page</h1>
+{% for profile in all_ %}
+{% if profile.username %}
+<h2>{{profile.id}}</h2>
+    <h2>{{ profile.username }}</h2>
+    <h2>{{ profile.email }}</h2>
+    <img src="{{ profile.profile_pic.url }}" alt="Profile Picture" class="image rounded img-fluid rounded-0">
+    <h3>{{profile.date}}</h3>
+{%else%}
+<h2>Opps!</h2>
+{% endif %}
+{% endfor %}
+     </body>
+     </html>
+

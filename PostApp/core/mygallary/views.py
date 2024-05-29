@@ -53,14 +53,16 @@ def edit(request, id):
 
 #Search post
 def search_query(request):
+    search = request.GET.get('query')
+
     if request.method == 'GET':
-        print("1st done")
-        query = request.GET.get('query')
-        print("2nd done")
-        if query:
-            print("3rd done")
-            search = newpost.objects.filter( caption=query, image=query)
-            print("4th done")
-    return render(request, 'home/search.html', {'search': search})
-    
+        query = request.GET.get('query', '').strip()  # Get the query parameter and strip any leading/trailing spaces
+
+        if query:  # Ensure query is not empty
+            search = newpost.objects.filter(
+                caption__icontains=query
+            ) | newpost.objects.filter(
+                image__icontains=query
+            )  # Use icontains for partial matches
+
 

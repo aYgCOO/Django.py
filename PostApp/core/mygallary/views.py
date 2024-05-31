@@ -1,5 +1,6 @@
-from django.shortcuts import render, redirect, get_object_or_404, HttpResponse
+from django.shortcuts import render, redirect, get_object_or_404
 from mygallary.models import newpost
+from userauthentication.models import user_db 
 from django.contrib import messages
 
 # Create your views here.
@@ -12,17 +13,18 @@ def home(request):
 
 
 #New post
-def form(request):
+def form(request, id):
+    new_post = get_object_or_404(user_db, id=id)
     if request.method == 'POST':
         caption = request.POST.get('caption')
         image = request.FILES.get('image')
         np = newpost(caption=caption, image=image)
         np.save()
-        db = newpost.objects.all()
+        context = {'db': db}
         messages.success(request, "Your post is uploaded successfully")
         return redirect('/')  
     else:
-        return render(request, 'home/form.html')
+        return render(request, 'home/form.html', context)
     
 
 #Delete post

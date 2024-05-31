@@ -24,7 +24,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home, name='home'),
-    path('new-post/', form, name='form'),
+    path('new-post/<int:id>', form, name='form'),
     path('delete/<int:id>/', delete, name='delete'),
     path('edit-post/<int:id>/', edit, name='edit-post'),
     path('search/', search_query, name='search_query'),

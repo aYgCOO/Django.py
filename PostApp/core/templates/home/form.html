@@ -1,21 +1,11 @@
 {% extends "form-base.html" %}
-{% include "profile.html" %} 
 
 {% block start %}
 <!-- New post form -Start  -->
 <form action="{% url 'form' %}" class="container py-4 px-5 bg-dark border-dark rounded text-light" method="post" enctype="multipart/form-data">
      <h5>New Post</h5>
      <hr>
-     {% csrf_token %}
-   
-    {% comment %} {% for profile in all_ %}
-      <!-- This will output the profile object for debugging purposes -->
-     <div class="mb-3">
-         <label for="formFile" class="form-label">User ID</label>
-         <span class="form-control bg-dark text-light"id="formFile">{{profile.username}}</span>
-     </div>
-    
- {% endfor %}  {% endcomment %}
+     {% csrf_token %} 
      <div class="mb-3">
           <label for="exampleFormControlTextarea1" class="form-label">Caption</label>
           <textarea class="form-control bg-dark text-light" name="caption" id="exampleFormControlTextarea1" rows="3">{{caption}}</textarea>

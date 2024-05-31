@@ -65,3 +65,5 @@ def profile(request):
      context = {'all_': all_}
      return render(request, 'home/profile.html', context)
 
+
+

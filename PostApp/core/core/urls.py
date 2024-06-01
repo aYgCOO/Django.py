@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from mygallary.views import home, form, delete, edit, search_query
+from mygallary.views import home,new_post, delete, edit
 from userauthentication.views import register, login, profile
 from django.conf import settings
 from django.conf.urls.static import static
@@ -24,10 +24,10 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home, name='home'),
-    path('new-post/<int:id>', form, name='form'),
+    path('new-post/<int:id>', new_post, name='new-post'),
     path('delete/<int:id>/', delete, name='delete'),
     path('edit-post/<int:id>/', edit, name='edit-post'),
-    path('search/', search_query, name='search_query'),
+    # path('search/', search_query, name='search_query'),
     path('signin/', register , name='signin'),
     path('login/',login, name='login'),
     path('myprofile/', profile, name='profile')

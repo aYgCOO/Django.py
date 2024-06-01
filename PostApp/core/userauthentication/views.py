@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import authenticate, login as auth_login
-from userauthentication.models import user_db
+from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 
 
@@ -16,14 +16,14 @@ def register(request):
           confirm_password = request.POST.get('confirm_password')
           profile_pic = request.FILES.get('profile_pic')
 
-          if user_db.objects.filter(username=username).exists():
+          if User.objects.filter(username=username).exists():
                messages.error(request, "User already exist.")
-          elif user_db.objects.filter(email=email).exists():
+          elif User.objects.filter(email=email).exists():
                messages.error(request, "Email is already exist.")
           elif password != confirm_password:
                messages.error(request, "password not matched!")
           else:
-               useracc = user_db.objects.create(
+               useracc = User.objects.create_user(
                     username=username,
                     email=email,
                     password=password
@@ -42,7 +42,7 @@ def login(request):
           username = request.POST.get('username')
           password = request.POST.get('password')
 
-          if not user_db.objects.filter(username=username).exists():
+          if not User.objects.filter(username=username).exists():
                messages.error(request, "User not found.")
                return redirect('/login/')
 
@@ -61,7 +61,7 @@ def login(request):
 #profile page
 @login_required
 def profile(request):
-     all_ = user_db.objects.filter(id=request.user.id).order_by('-date')
+     all_ = User.objects.filter(id=request.user.id).order_by('-date')
      context = {'all_': all_}
      return render(request, 'home/profile.html', context)
 

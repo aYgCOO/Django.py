@@ -1,11 +1,12 @@
 from django.db import models
-from userauthentication.models import user_db
+from userauthentication.models import User 
+from django.utils import timezone
+ # Ensure this import works, else it should be from django.contrib.auth.models import User
 
-# Create your models here.
 class newpost(models.Model):
-     user = models.ForeignKey(user_db, on_delete=models.CASCADE)
-     caption = models.CharField(max_length=30)
-     image = models.ImageField(upload_to='images/', blank=True, null=True)
-     date=models.DateField( auto_now=False, auto_now_add=True)
-     def __str__(self) -> str:
-          return self.caption + ''
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    caption = models.CharField(max_length=30)
+    image_file = models.ImageField(upload_to='images/', blank=True, null=True)
+    created_at = models.DateTimeField(default=timezone.now)  # Set to auto_now_add to automatically set the timestamp
+    def __str__(self) -> str:
+        return f"{self.user.username} - {self.caption[:20]}"  # Use self.user.username instead of self.User.username
